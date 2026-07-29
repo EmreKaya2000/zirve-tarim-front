@@ -66,15 +66,18 @@ deposunun README'sinde.
 başında "ELLE DÜZENLEMEYİN" uyarısı vardır.
 
 Neden kopya: paket API sözleşmesidir (71 tip + 116 çalışma zamanı değeri —
-talep durum makinesi, `MAX_LIMIT`, `ERROR_CODES`, etiket haritaları). Registry
-üzerinden dağıtmak en temiz yol ama paket PRIVATE olacağı için her makinede ve
-her CI işinde `NODE_AUTH_TOKEN` isterdi. Kopya, token kurulmadan çalışan bir
-sistem verir; **ayrışma CI'da yakalanır** (`pnpm types:check`).
+talep durum makinesi, `MAX_LIMIT`, `ERROR_CODES`, etiket haritaları).
+
+**Registry kullanılmıyor ve bu denendi.** GitHub Packages, paket kapsamının depo
+sahibiyle aynı olmasını zorunlu tutar; `@zirve/types` yayınlama denemesi
+`403 permission_denied: The requested installation does not exist` verdi.
+Gerekçe, alternatifler ve karar Api deposunun README'sinde.
+
+**Ayrışma CI'da yakalanır** (`pnpm types:check`): kopya yeniden üretilir ve
+`git diff --exit-code` ile fark aranır. Elle düzenlenen kopya derlemeyi kırar.
 
 Sözleşmeyi değiştirmek gerekiyorsa **Api deposunda** değiştirin, sonra burada
-`pnpm sync:types` çalıştırın. Registry'ye geçiş adımları Api deposunun
-README'sinde; import yolları (`@zirve/types`) değişmediği için uygulama kodu
-etkilenmez.
+`pnpm sync:types` çalıştırın.
 
 ## `@zirve/ui`
 
