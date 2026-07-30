@@ -67,6 +67,25 @@ deposunun README'sinde.
 > kaldırır; bu köken API'nin `CORS_ORIGINS` listesinde olmalıdır.
 > Bitince `pnpm docker:up` ile normal kipe dönün.
 
+## CI — `ZIRVE_API_TOKEN` sırrı gerekir
+
+CI, sözleşme kopyasını doğrulamak ve Playwright için gerçek API'yi kaldırmak
+üzere **zirve-tarim-api deposunu klonlar**. O depo private ve
+`secrets.GITHUB_TOKEN` yalnız kendi deposunu görür — bu yüzden adım
+`Not Found` ile düşer.
+
+Bir kez yapılacak (depo sahibi):
+
+1. GitHub → Settings → Developer settings → **Fine-grained personal access token**
+2. Repository access: yalnız `zirve-tarim-api` · Permissions: **Contents → Read-only**
+3. Jetonu bu depoya sır olarak ekleyin:
+
+```bash
+gh secret set ZIRVE_API_TOKEN --repo EmreKaya2000/zirve-tarim-front
+```
+
+Jeton eksikse CI bilerek patlar; sessizce eski kırık yola düşmez.
+
 ## `@zirve/types` — sözleşme kopyası
 
 `src/types/` klasörü **kopyadır**, kaynağı `zirve-tarim-api`. Her dosyanın
