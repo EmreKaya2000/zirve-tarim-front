@@ -299,7 +299,11 @@ export function InquiryForm({
                 {...register('consentAccepted')}
               />
               <span>
-                <Link href="/kvkk" target="_blank" className="underline">
+                <Link
+                  href="/kvkk"
+                  target="_blank"
+                  className="underline transition-colors hover:text-primary-container"
+                >
                   KVKK Aydınlatma Metni
                 </Link>
                 &rsquo;ni okudum; iletişim bilgilerimin talebimin değerlendirilmesi amacıyla

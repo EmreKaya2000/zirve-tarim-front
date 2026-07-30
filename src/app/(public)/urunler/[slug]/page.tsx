@@ -169,7 +169,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <ul className="mt-3 flex flex-col gap-2">
             {incompatible.map((entry) => (
               <li key={entry.product.id} className="text-sm text-on-surface">
-                <Link href={`/urunler/${entry.product.slug}`} className="underline">
+                <Link
+                  href={`/urunler/${entry.product.slug}`}
+                  className="underline transition-colors hover:text-primary-container"
+                >
                   {entry.product.name}
                 </Link>
                 {entry.note !== null ? (

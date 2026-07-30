@@ -82,7 +82,10 @@ export function CustomerLoginForm() {
             Şifre
           </Label>
 
-          <Link href="/sifremi-unuttum" className="text-sm text-primary-container underline">
+          <Link
+            href="/sifremi-unuttum"
+            className="text-sm text-primary-container underline transition-colors hover:text-primary"
+          >
             Şifremi unuttum
           </Link>
         </div>

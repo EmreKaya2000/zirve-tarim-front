@@ -217,7 +217,11 @@ export function CustomerRegisterForm() {
             {...register('consentAccepted')}
           />
           <span>
-            <Link href="/kvkk" target="_blank" className="underline">
+            <Link
+              href="/kvkk"
+              target="_blank"
+              className="underline transition-colors hover:text-primary-container"
+            >
               KVKK Aydınlatma Metni
             </Link>
             &rsquo;ni okudum; bilgilerimin hesabımın oluşturulması ve taleplerimin değerlendirilmesi

@@ -25,7 +25,10 @@ export function CustomerAuthShell({
 }) {
   return (
     <div className="mx-auto flex w-full max-w-md flex-col px-4 py-12 sm:py-16">
-      <Link href="/" className="mx-auto flex items-center gap-3">
+      <Link
+        href="/"
+        className="mx-auto flex items-center gap-3 transition-opacity hover:opacity-80"
+      >
         <span className="flex size-11 items-center justify-center rounded-[12px] bg-primary text-on-primary">
           <Sprout className="size-6" aria-hidden="true" />
         </span>

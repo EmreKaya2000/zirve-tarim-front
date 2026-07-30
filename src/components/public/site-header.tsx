@@ -78,7 +78,10 @@ export function SiteHeader({ categories }: { categories: CategoryNode[] }) {
           <Menu className="size-5" aria-hidden="true" />
         </button>
 
-        <Link href="/" className="flex shrink-0 items-center gap-3">
+        <Link
+          href="/"
+          className="flex shrink-0 items-center gap-3 transition-opacity hover:opacity-80"
+        >
           <span className="flex size-10 shrink-0 items-center justify-center rounded-[10px] bg-primary text-on-primary">
             <Sprout className="size-5" aria-hidden="true" />
           </span>
@@ -211,7 +214,7 @@ function CategoryMenu({ categories }: { categories: CategoryNode[] }) {
 
       <Link
         href="/kategoriler"
-        className="mt-4 block border-t border-outline-variant pt-3 text-label-sm uppercase text-primary-container"
+        className="mt-4 block border-t border-outline-variant pt-3 text-label-sm uppercase text-primary-container transition-colors hover:text-primary"
       >
         Tüm kategoriler
       </Link>
@@ -274,7 +277,7 @@ function MobileMenu({
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className="border-b border-outline-variant py-3 text-label-md text-on-surface"
+              className="border-b border-outline-variant py-3 text-label-md text-on-surface transition-colors hover:text-primary-container"
             >
               {link.label}
             </Link>
@@ -290,7 +293,7 @@ function MobileMenu({
               <Link
                 href={`/kategori/${category.slug}`}
                 onClick={onClose}
-                className="block border-b border-outline-variant py-3 text-sm text-on-surface-variant"
+                className="block border-b border-outline-variant py-3 text-sm text-on-surface-variant transition-colors hover:text-on-surface"
               >
                 {category.name}
               </Link>
@@ -355,7 +358,7 @@ function MobileAccountLinks({ onClose }: { onClose: () => void }) {
         <Link
           href="/hesabim"
           onClick={onClose}
-          className="flex items-center gap-2 border-t border-outline-variant py-3 text-sm text-on-surface-variant"
+          className="flex items-center gap-2 border-t border-outline-variant py-3 text-sm text-on-surface-variant transition-colors hover:text-on-surface"
         >
           <User className="size-4" aria-hidden="true" />
           Hesabım
@@ -364,7 +367,7 @@ function MobileAccountLinks({ onClose }: { onClose: () => void }) {
         <Link
           href="/hesabim/taleplerim"
           onClick={onClose}
-          className="flex items-center gap-2 border-t border-outline-variant py-3 text-sm text-on-surface-variant"
+          className="flex items-center gap-2 border-t border-outline-variant py-3 text-sm text-on-surface-variant transition-colors hover:text-on-surface"
         >
           <ClipboardList className="size-4" aria-hidden="true" />
           Taleplerim
@@ -376,7 +379,7 @@ function MobileAccountLinks({ onClose }: { onClose: () => void }) {
             onClose();
             void logout();
           }}
-          className="flex items-center gap-2 border-t border-outline-variant py-3 text-left text-sm text-on-surface-variant"
+          className="flex items-center gap-2 border-t border-outline-variant py-3 text-left text-sm text-on-surface-variant transition-colors hover:text-error"
         >
           <LogOut className="size-4" aria-hidden="true" />
           Çıkış Yap

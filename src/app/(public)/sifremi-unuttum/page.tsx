@@ -15,7 +15,10 @@ export default function ForgotPasswordPage() {
       title="Şifremi Unuttum"
       description="E-posta adresinizi girin; şifrenizi yenilemeniz için bir bağlantı gönderelim."
       footer={
-        <Link href="/giris" className="text-primary-container underline">
+        <Link
+          href="/giris"
+          className="text-primary-container underline transition-colors hover:text-primary"
+        >
           Giriş sayfasına dön
         </Link>
       }

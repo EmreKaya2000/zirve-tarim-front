@@ -236,7 +236,10 @@ export function VariantSelector({
 
         {added ? (
           <Alert variant="success" title="Talep listenize eklendi">
-            <Link href="/talep-sepeti" className="underline">
+            <Link
+              href="/talep-sepeti"
+              className="underline transition-colors hover:text-primary-container"
+            >
               Talep listesine git
             </Link>
           </Alert>

@@ -22,7 +22,10 @@ export default function RegisterPage() {
       footer={
         <>
           Hesabınız var mı?{' '}
-          <Link href="/giris" className="text-primary-container underline">
+          <Link
+            href="/giris"
+            className="text-primary-container underline transition-colors hover:text-primary"
+          >
             Giriş yapın
           </Link>
         </>

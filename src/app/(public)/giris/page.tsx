@@ -19,7 +19,10 @@ export default function LoginPage() {
       footer={
         <>
           Hesabınız yok mu?{' '}
-          <Link href="/kayit" className="text-primary-container underline">
+          <Link
+            href="/kayit"
+            className="text-primary-container underline transition-colors hover:text-primary"
+          >
             Ücretsiz oluşturun
           </Link>
         </>

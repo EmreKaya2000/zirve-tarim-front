@@ -217,7 +217,7 @@ function CheckList({
         <button
           type="button"
           onClick={() => setExpanded((value) => !value)}
-          className="mt-2 text-label-sm uppercase text-primary-container"
+          className="mt-2 text-label-sm uppercase text-primary-container transition-colors hover:text-primary hover:underline"
         >
           {expanded ? 'Daha az göster' : `+${items.length - 8} tane daha`}
         </button>

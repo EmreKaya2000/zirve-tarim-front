@@ -147,7 +147,10 @@ export function ResetPasswordForm({ token }: { token: string }) {
 
           <p className="mt-2">
             Bağlantının süresi dolmuş olabilir.{' '}
-            <Link href="/sifremi-unuttum" className="underline">
+            <Link
+              href="/sifremi-unuttum"
+              className="underline transition-colors hover:text-primary-container"
+            >
               Yeni bağlantı isteyin
             </Link>
             .

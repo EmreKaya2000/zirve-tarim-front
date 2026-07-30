@@ -60,6 +60,13 @@ deposunun README'sinde.
 | `pnpm sync:types`  | `@zirve/types` sözleşmesini Api deposundan kopyalar      |
 | `pnpm types:check` | Kopya taze mi? Ayrışmışsa hata verir (CI bu adımı koşar) |
 
+> **`pnpm test:e2e` öncesi API'yi test kipinde kaldırın.** Api deposunda
+> `pnpm e2e:api` çalıştırın. Normal kipte hız sınırı (giriş ucu 5 istek/dk)
+> ve `MAIL_DRIVER=log` yüzünden testlerin bir kısmı ortam nedeniyle kırılır —
+> kod yüzünden değil. Testler standalone sunucuyu `127.0.0.1:3100` üzerinde
+> kaldırır; bu köken API'nin `CORS_ORIGINS` listesinde olmalıdır.
+> Bitince `pnpm docker:up` ile normal kipe dönün.
+
 ## `@zirve/types` — sözleşme kopyası
 
 `src/types/` klasörü **kopyadır**, kaynağı `zirve-tarim-api`. Her dosyanın
