@@ -67,24 +67,34 @@ deposunun README'sinde.
 > kaldırır; bu köken API'nin `CORS_ORIGINS` listesinde olmalıdır.
 > Bitince `pnpm docker:up` ile normal kipe dönün.
 
-## CI — `ZIRVE_API_TOKEN` sırrı gerekir
+## CI — `ZIRVE_API_SSH_KEY` sırrı gerekir
 
 CI, sözleşme kopyasını doğrulamak ve Playwright için gerçek API'yi kaldırmak
 üzere **zirve-tarim-api deposunu klonlar**. O depo private ve
 `secrets.GITHUB_TOKEN` yalnız kendi deposunu görür — bu yüzden adım
-`Not Found` ile düşer.
+`Not Found` ile düşer (hata "yetkin yok" değil "yok" dediği için yanıltıcıdır).
 
-Bir kez yapılacak (depo sahibi):
-
-1. GitHub → Settings → Developer settings → **Fine-grained personal access token**
-2. Repository access: yalnız `zirve-tarim-api` · Permissions: **Contents → Read-only**
-3. Jetonu bu depoya sır olarak ekleyin:
+Kimlik olarak **salt okunur bir deploy key** kullanılır. Bir kez yapılır:
 
 ```bash
-gh secret set ZIRVE_API_TOKEN --repo EmreKaya2000/zirve-tarim-front
+ssh-keygen -t ed25519 -C "zirve-ci-api-read" -f ~/.ssh/zirve-ci-api -N ""
+
+# Açık anahtar Api deposuna (yazma yetkisi VERMEDEN)
+gh repo deploy-key add ~/.ssh/zirve-ci-api.pub \
+  --repo EmreKaya2000/zirve-tarim-api --title "CI: front + admin okuma"
+
+# Gizli anahtar bu depoya sır olarak
+gh secret set ZIRVE_API_SSH_KEY --repo EmreKaya2000/zirve-tarim-front < ~/.ssh/zirve-ci-api
 ```
 
-Jeton eksikse CI bilerek patlar; sessizce eski kırık yola düşmez.
+`-N ""` parolayı boş bırakır; CI parola giremez. `< dosya` ile verilir, böylece
+anahtar ne ekrana ne terminal geçmişine düşer.
+
+**Neden PAT değil:** fine-grained PAT'ın süresi dolar ve dolduğunda CI aynı
+`Not Found` hatasıyla kırmızıya döner — sebebi anlaşılmaz. Deploy key'in süresi
+yoktur, kapsamı tek depodur, yazma yetkisi yoktur.
+
+Anahtar eksikse CI bilerek patlar; sessizce başka bir yola düşmez.
 
 ## `@zirve/types` — sözleşme kopyası
 
