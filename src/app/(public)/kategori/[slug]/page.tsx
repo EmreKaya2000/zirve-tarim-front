@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 
+import { CategoryIcon } from '@/components/public/category-icon';
 import { Breadcrumbs } from '@/components/public/product-info';
 import { ProductGridSkeleton } from '@/components/public/states';
 import { TaxonomyProductList } from '@/components/public/taxonomy-product-list';
@@ -65,7 +66,10 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
       />
 
       <header className="mt-4">
-        <h1 className="text-h1 text-on-surface">{category.name}</h1>
+        <div className="flex items-center gap-3">
+          <CategoryIcon iconUrl={category.iconUrl} size={48} />
+          <h1 className="text-h1 text-on-surface">{category.name}</h1>
+        </div>
 
         {category.description !== null ? (
           <p className="mt-2 max-w-3xl text-body-lg text-on-surface-variant">

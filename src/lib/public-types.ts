@@ -175,6 +175,7 @@ export interface CategoryNode extends CategoryRef {
 
 export interface CategoryDetail extends CategoryRef {
   description: string | null;
+  iconUrl: string | null;
   imageUrl: string | null;
   parentId: string | null;
   breadcrumb: CategoryRef[];

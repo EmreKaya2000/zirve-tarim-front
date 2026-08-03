@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { Button, cn } from '@zirve/ui';
 
+import { CategoryIcon } from '@/components/public/category-icon';
 import { useActiveCart } from '@/lib/active-cart';
 import { SITE_NAME } from '@/lib/env';
 import type { CategoryNode } from '@/lib/public-types';
@@ -189,8 +190,9 @@ function CategoryMenu({ categories }: { categories: CategoryNode[] }) {
           <div key={category.id}>
             <Link
               href={`/kategori/${category.slug}`}
-              className="text-label-md text-on-surface hover:text-primary-container"
+              className="flex items-center gap-2 text-label-md text-on-surface hover:text-primary-container"
             >
+              <CategoryIcon iconUrl={category.iconUrl} size={24} className="rounded-[6px]" />
               {category.name}
             </Link>
 
@@ -293,8 +295,9 @@ function MobileMenu({
               <Link
                 href={`/kategori/${category.slug}`}
                 onClick={onClose}
-                className="block border-b border-outline-variant py-3 text-sm text-on-surface-variant transition-colors hover:text-on-surface"
+                className="flex items-center gap-3 border-b border-outline-variant py-3 text-sm text-on-surface-variant transition-colors hover:text-on-surface"
               >
+                <CategoryIcon iconUrl={category.iconUrl} size={28} className="rounded-[8px]" />
                 {category.name}
               </Link>
             </li>
