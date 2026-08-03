@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Sprout } from 'lucide-react';
@@ -33,8 +34,27 @@ export default async function CategoriesPage() {
                 className="rounded-[12px] border border-outline-variant bg-surface-container-lowest p-5"
               >
                 <Link href={`/kategori/${category.slug}`} className="group flex items-center gap-3">
-                  <span className="flex size-10 shrink-0 items-center justify-center rounded-[10px] bg-secondary-container text-on-primary-fixed-variant">
-                    <Sprout className="size-5" aria-hidden="true" />
+                  <span className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-[10px] bg-secondary-container text-on-primary-fixed-variant">
+                    {/*
+                      Mağazanın yüklediği ikon varsa o gösterilir. YOKSA
+                      varsayılan ikona düşülür — ikon yüklemek zorunlu
+                      değildir ve boş bir kutu göstermek gerileme olurdu.
+
+                      `next/image` kullanılabiliyor çünkü /uploads yolu
+                      next.config.ts içindeki rewrite ile AYNI KÖKENDEN
+                      sunuluyor; uzak kaynak tanımı gerekmiyor.
+                    */}
+                    {typeof category.iconUrl === 'string' && category.iconUrl !== '' ? (
+                      <Image
+                        src={category.iconUrl}
+                        alt=""
+                        width={40}
+                        height={40}
+                        className="size-full object-contain"
+                      />
+                    ) : (
+                      <Sprout className="size-5" aria-hidden="true" />
+                    )}
                   </span>
                   <span className="text-label-md text-on-surface group-hover:text-primary-container">
                     {category.name}

@@ -166,6 +166,8 @@ export interface RelatedProduct {
 
 export interface CategoryNode extends CategoryRef {
   description?: string | null;
+  /** Mağazanın yüklediği ikon görseli; yoksa varsayılan ikon gösterilir. */
+  iconUrl?: string | null;
   imageUrl?: string | null;
   productCount?: number;
   children: CategoryNode[];
